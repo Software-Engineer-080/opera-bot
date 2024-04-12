@@ -9,11 +9,11 @@ from calendar import monthrange
 
 locale.setlocale(locale.LC_ALL, "ru_RU.UTF-8")
 
-bot = TeleBot("7176322910:AAFyktToMVwA777UqtB6kefj74b-nXlshls")
+bot = TeleBot("YOUR_TOKEN")
 
 conn = sqlite3.connect("opera.sqlite", check_same_thread=False)
 
-owner = 517899909  # Здесь написать ID владельца компании
+owner =  # Здесь написать ID владельца компании
 
 m_day = monthrange(int(datetime.now().date().year), int(datetime.now().date().month))[-1]
 
