@@ -215,8 +215,9 @@ def sending_photo(call, num_menu: str, page: int = 1, previous_message: int = No
 
             if num_menu == "event":
 
-                myMonth = datetime.today().strftime("%B").upper()
-                desc = f"МЕРОПРИЯТИЯ {myMonth} 🌿"
+                myMonth = datetime.today().month
+
+                desc = f"МЕРОПРИЯТИЯ {month_dict[myMonth]} 🌿"
 
         if new_photo:
 

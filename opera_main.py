@@ -1,4 +1,3 @@
-import opera_serv
 from opera_owner import *
 
 
@@ -457,7 +456,7 @@ def callback_query(call: types.CallbackQuery) -> None:
                 desc = "Здесь Вы можете найти различное меню!"
 
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=desc,
-                                  reply_markup=inline_buttons(food_menu, buttons_per_row=1))
+                                  reply_markup=inline_buttons(food_menu, buttons_per_row=2))
 
         except BaseException:
 
@@ -499,7 +498,7 @@ def callback_query(call: types.CallbackQuery) -> None:
             bot.delete_message(call.message.chat.id, call.message.message_id)
 
             bot.send_message(chat_id=call.message.chat.id, text=menu_desc,
-                             disable_notification=True, reply_markup=inline_buttons(food_menu, buttons_per_row=1))
+                             disable_notification=True, reply_markup=inline_buttons(food_menu, buttons_per_row=2))
 
         except BaseException:
 
@@ -712,7 +711,7 @@ def callback_query(call: types.CallbackQuery) -> None:
 
 while True:
     try:
-        opera_serv.opera_alive()
+        print('Бот запущен!')
         bot.polling(none_stop=True, interval=1)
     except:
         continue

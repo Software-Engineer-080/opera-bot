@@ -46,7 +46,7 @@ def adm_add(message: types.Message) -> None:
 
         bot.send_message(chat_id=message.chat.id,
                          text=owner_menu_desc, disable_notification=True,
-                         reply_markup=inline_buttons(owner_menu, buttons_per_row=1))
+                         reply_markup=inline_buttons(owner_menu))
 
 
 # Функция добавления администратора
@@ -159,7 +159,7 @@ def adm_del(message: types.Message) -> None:
         bot.delete_message(chat_id=message.chat.id, message_id=own.message_id)
 
         bot.send_message(chat_id=message.chat.id, text=owner_menu_desc, disable_notification=True,
-                         reply_markup=inline_buttons(owner_menu, buttons_per_row=1))
+                         reply_markup=inline_buttons(owner_menu))
 
 
 # Функция удаления администратора
