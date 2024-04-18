@@ -7,7 +7,7 @@ from calendar import monthrange
 
 # Конкретные значения ------------------------------------------------------------------------------
 
-bot = AsyncTeleBot("7176322910:AAFyktToMVwA777UqtB6kefj74b-nXlshls")
+bot = AsyncTeleBot("YOUR_TOKEN")
 
 conn = sqlite3.connect("opera.sqlite", check_same_thread=False)
 
