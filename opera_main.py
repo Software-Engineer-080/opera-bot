@@ -1,3 +1,4 @@
+import asyncio
 from opera_owner import *
 
 
@@ -249,26 +250,50 @@ def callback_query(call: types.CallbackQuery) -> None:
 
     elif call.data == '⚠️Рассылка ⚠️':
 
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
-                              text=menu_news_desc, reply_markup=inline_buttons(news_menu))
+        try:
+
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
+                                  text=menu_news_desc, reply_markup=inline_buttons(news_menu))
+
+        except BaseException:
+
+            pass
 
     elif call.data == 'Мужчинам':
 
-        sex = 'Мужской'
+        try:
 
-        new_sex_func(call.message, sex)
+            sex = 'Мужской'
+
+            new_sex_func(call.message, sex)
+
+        except BaseException:
+
+            pass
 
     elif call.data == 'Женщинам':
 
-        sex = 'Женский'
+        try:
 
-        new_sex_func(call.message, sex)
+            sex = 'Женский'
+
+            new_sex_func(call.message, sex)
+
+        except BaseException:
+
+            pass
 
     elif call.data == 'Всем':
 
-        sex = None
+        try:
 
-        new_sex_func(call.message, sex)
+            sex = None
+
+            new_sex_func(call.message, sex)
+
+        except BaseException:
+
+            pass
 
     # Профиль ---------------------------------------
 
@@ -597,7 +622,7 @@ def callback_query(call: types.CallbackQuery) -> None:
 
     # Мероприятия ---------------------------------------
 
-    elif (call.data == "⚡️Мероприятия⚡️") or (call.data == "🔁 Эвент"):
+    elif (call.data == "⚡️ Эвент") or (call.data == "🔁 Эвент"):
 
         try:
 
@@ -623,6 +648,34 @@ def callback_query(call: types.CallbackQuery) -> None:
         except BaseException:
 
             pass
+
+    # Песни ---------------------------------------
+
+    elif call.data == 'Песни 🎤':
+
+        try:
+
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
+                                  text=music_menu_desc, reply_markup=inline_buttons(music_menu))
+
+        except BaseException:
+
+            pass
+
+    elif call.data == 'Буду 🤩':
+
+        try:
+
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
+                                  text=music_table_desc, reply_markup=inline_buttons(table_menu, buttons_per_row=4))
+
+        except BaseException:
+
+            pass
+
+    elif call.data in ['1🪑', '2🪑', '3🪑', '4🪑', '5🪑', '6🪑', '7🪑', '8🪑', '9🪑', '10🪑', '11🪑', '12🪑', 'Барная стойка']:
+
+        pass
 
     # Другое ---------------------------------------
 
@@ -709,9 +762,23 @@ def callback_query(call: types.CallbackQuery) -> None:
         bot.answer_callback_query(call.id, text="Команда в разработке!")
 
 
+async def main():
+    print('\n\n\n\n---------------------- Бот запущен! ----------------------\n\n\n\n')
+    loop = asyncio.get_event_loop()
+    await loop.create_task(bot.polling(none_stop=True))
+    # await loop.create_task(callback_query())
+    loop.run_forever()
+    # await bot.polling(none_stop=True, interval=1)
+
+#
+# if __name__ == "__main__":
+
+
+
 while True:
     try:
-        print('Бот запущен!')
+        print('\n\n\n\n---------------------- Бот запущен! ----------------------\n\n\n\n')
+        asyncio.run(main())
         bot.polling(none_stop=True, interval=1)
     except:
         continue

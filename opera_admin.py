@@ -2,6 +2,7 @@ from opera_reserve import *
 
 
 # Функция удаления или добавления фотографий в выбранной категории
+@throttle(2)
 def opera_administrator(call, category_value: str) -> None:
     """
     Позволяет удалить или добавить фотографии в выбранной категории
@@ -42,7 +43,8 @@ def opera_administrator(call, category_value: str) -> None:
                           text=admin_question_desc, reply_markup=adm_cat)
 
 
-# Функция удаления всх фотографий в выбранной категории
+# Функция удаления всех фотографий в выбранной категории
+@throttle(2)
 def all_photo(message: types.Message, category: str) -> None:
     """
     Позволяет удалить все фотографии в выбранной категории
@@ -278,6 +280,7 @@ def handle_photo_description(message: types.Message, category: str, file_id: str
 
 
 # Функция выбора телефона пользователя для удаления конкретной брони
+@throttle(2)
 def delete_res(message: types.Message) -> None:
     """
     Позволяет выбрать номер телефона пользователя, чьё бронирование нужно удалить
@@ -389,6 +392,7 @@ def del_one_res(message: types.Message) -> None:
 
 
 # Функция создания рассылки
+@throttle(2)
 def new_sex_func(message: types.Message, sex: str | None) -> None:
 
     """

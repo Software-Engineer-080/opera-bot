@@ -2,6 +2,7 @@ from opera_admin import *
 
 
 # Функция выбора номера телефона для назначения администратора
+@throttle(2)
 def adm_add(message: types.Message) -> None:
 
     """
@@ -117,6 +118,7 @@ def add_admin(message: types.Message) -> None:
 
 
 # Функция выбора номера телефона для удаления администратора
+@throttle(2)
 def adm_del(message: types.Message) -> None:
 
     """

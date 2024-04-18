@@ -298,13 +298,19 @@ def next_mess(call, star: int) -> None:
     None
     """
 
-    text = call.text
+    try:
 
-    bot.send_message(chat_id=owner,
-                     text=f"Пользователь {call.from_user.first_name} с ID {call.chat.id} поставил "
-                          f"оценку {star} по причине:\n\n{text}")
+        text = call.text
 
-    bot.send_message(call.chat.id, thank_desc_rate, reply_markup=inline_buttons(main_menu_button))
+        bot.send_message(chat_id=owner,
+                         text=f"Пользователь {call.from_user.first_name} с ID {call.chat.id} поставил "
+                              f"оценку {star} по причине:\n\n{text}")
+
+        bot.send_message(call.chat.id, thank_desc_rate, reply_markup=inline_buttons(main_menu_button))
+
+    except:
+
+        bot.send_message(call.chat.id, thank_desc_rate, reply_markup=inline_buttons(main_menu_button))
 
 
 # Функция выставления максимальной оценки пользователем
@@ -330,10 +336,12 @@ def max_star(call, star: int) -> None:
     update_user_star(call.chat.id, star)
 
     star_reply = InlineKeyboardMarkup()
-    btn_1 = InlineKeyboardButton(text='🌟Оставить отзыв🌟', url="https://yandex.ru/maps/org/52896029199")
-    btn_2 = InlineKeyboardButton(text='Главное меню', callback_data='Главное меню')
+    btn_1 = InlineKeyboardButton(text='🌟Оставить отзыв в Яндекс', url="https://yandex.ru/maps/org/52896029199")
+    btn_2 = InlineKeyboardButton(text='💥Оставить отзыв в 2 Gis', url="https://2gis.ru/kemerovo/firm/70000001057524200")
+    btn_3 = InlineKeyboardButton(text='Главное меню', callback_data='Главное меню')
     star_reply.row(btn_1)
     star_reply.row(btn_2)
+    star_reply.row(btn_3)
 
     bot.edit_message_text(chat_id=call.chat.id, message_id=call.message_id, text=max_rate_desc, parse_mode="Markdown",
                           disable_web_page_preview=True, reply_markup=star_reply)
