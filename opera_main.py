@@ -762,19 +762,6 @@ def callback_query(call: types.CallbackQuery) -> None:
         bot.answer_callback_query(call.id, text="Команда в разработке!")
 
 
-async def main():
-    print('\n\n\n\n---------------------- Бот запущен! ----------------------\n\n\n\n')
-    loop = asyncio.get_event_loop()
-    await loop.create_task(bot.polling(none_stop=True))
-    # await loop.create_task(callback_query())
-    loop.run_forever()
-    # await bot.polling(none_stop=True, interval=1)
-
-#
-# if __name__ == "__main__":
-
-
-
 while True:
     try:
         print('\n\n\n\n---------------------- Бот запущен! ----------------------\n\n\n\n')
