@@ -11,7 +11,7 @@ bot = AsyncTeleBot("YOUR_TOKEN")
 
 conn = sqlite3.connect("opera.sqlite", check_same_thread=False)
 
-owner = 0000  # 517899909  # Здесь написать ID владельца компании
+owner = 0000  # Здесь написать ID владельца компании
 
 m_day = monthrange(int(datetime.now().date().year), int(datetime.now().date().month))[-1]
 
